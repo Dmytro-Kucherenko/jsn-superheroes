@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "turbo": "^1.10.15"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md,scss,html}\""
+  },
+  "devDependencies": {
+    "prettier": "3.0.1",
+    "typescript": "5.1.6"
+  }
+}
