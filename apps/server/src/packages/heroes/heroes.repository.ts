@@ -42,23 +42,12 @@ class HeroesRepository implements Repository<HeroItem> {
     return heroes.map((hero) => new HeroItem(hero));
   }
 
-  async update({
-    id,
-    nickname,
-    realName,
-    description,
-    powers,
-    phrase,
-    images,
-  }: HeroItem): Promise<HeroItem> {
-    const foundHero = await this.findById(id);
+  async update(hero: HeroItem): Promise<HeroItem> {
+    const { id, nickname, realName, description, powers, phrase, images } =
+      hero.fields;
 
-    if (!foundHero) {
-      return null;
-    }
-
-    const hero = await this.heroesRepository.save({
-      id,
+    const updateHero = await this.heroesRepository.save({
+      id: id as number,
       nickname,
       realName,
       description,
@@ -68,18 +57,13 @@ class HeroesRepository implements Repository<HeroItem> {
       updatedAt: new Date(),
     });
 
-    return new HeroItem(hero);
+    return new HeroItem(updateHero);
   }
 
-  async delete(id: number): Promise<HeroItem> {
-    const foundHero = await this.findById(id);
+  async delete(id: number): Promise<number> {
+    const { affected } = await this.heroesRepository.delete(id);
 
-    if (!foundHero) {
-      return null;
-    }
-
-    await this.heroesRepository.delete(id);
-    return new HeroItem(foundHero);
+    return affected ?? 0;
   }
 }
 

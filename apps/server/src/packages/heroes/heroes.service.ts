@@ -14,15 +14,19 @@ export class HeroesService {
       throw new NotFoundException('Hero was not found.');
     }
 
-    return hero;
+    return hero.fields;
   }
 
-  getAll(): Promise<HeroItemResponseDto[]> {
-    return this.heroesRepository.findAll();
+  async getAll(): Promise<HeroItemResponseDto[]> {
+    const heroes = await this.heroesRepository.findAll();
+
+    return heroes.map((hero) => hero.fields);
   }
 
   create(hero: HeroUpsertRequestDto): HeroItemResponseDto {
-    return this.heroesRepository.create(new HeroItem(hero));
+    const createdHero = this.heroesRepository.create(new HeroItem(hero));
+
+    return createdHero.fields;
   }
 
   async update(
@@ -36,6 +40,12 @@ export class HeroesService {
       images,
     }: HeroUpsertRequestDto,
   ): Promise<HeroItemResponseDto> {
+    const foundHero = await this.heroesRepository.findById(id as number);
+
+    if (!foundHero) {
+      throw new NotFoundException('Hero was not found.');
+    }
+
     const updatedHero = await this.heroesRepository.update(
       new HeroItem({
         id,
@@ -48,20 +58,17 @@ export class HeroesService {
       }),
     );
 
-    if (!updatedHero) {
-      throw new NotFoundException('Hero was not found.');
-    }
-
-    return updatedHero;
+    return updatedHero.fields;
   }
 
   async delete(id: number): Promise<HeroItemResponseDto> {
-    const hero = await this.heroesRepository.delete(id);
+    const hero = await this.heroesRepository.findById(id);
 
     if (!hero) {
       throw new NotFoundException('Hero was not found.');
     }
 
-    return hero;
+    await this.heroesRepository.delete(id);
+    return hero.fields;
   }
 }
