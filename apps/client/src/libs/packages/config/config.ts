@@ -1,5 +1,13 @@
-import { Config } from './config.package.js';
+import type { EnvironmentSchema } from './libs/types';
 
-const config = new Config();
+class Config {
+  public ENV: EnvironmentSchema;
 
-export { config };
+  public constructor() {
+    this.ENV = {
+      API_URL: import.meta.env.VITE_APP_API_ORIGIN_URL,
+    };
+  }
+}
+
+export { Config };

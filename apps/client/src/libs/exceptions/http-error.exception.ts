@@ -1,4 +1,4 @@
-import { HttpCode } from '../enums/enums.js';
+import { HttpCode } from '../enums';
 
 class HttpError extends Error {
   public status: HttpCode;
