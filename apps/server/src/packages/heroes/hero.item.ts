@@ -31,9 +31,9 @@ class HeroItem {
     this.updatedAt = hero.updatedAt ?? new Date();
   }
 
-  get object() {
+  get fields() {
     return {
-      id: this.id,
+      id: this.id as number,
       nickname: this.nickname,
       realName: this.realName,
       description: this.description,
