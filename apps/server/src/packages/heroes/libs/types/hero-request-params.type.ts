@@ -4,7 +4,7 @@ class HeroRequestParams {
   @IsNumberString()
   //@Type(() => Number)
   @IsInt()
-  id: number;
+  id!: number;
 }
 
 export { HeroRequestParams };

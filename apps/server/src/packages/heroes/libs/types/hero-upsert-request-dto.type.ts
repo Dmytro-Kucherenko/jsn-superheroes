@@ -3,24 +3,24 @@ import { type HeroUpsertRequestDto as HeroUpsertRequestDtoSchema } from 'shared/
 
 class HeroUpsertRequestDto implements HeroUpsertRequestDtoSchema {
   @IsNotEmpty()
-  nickname: string;
+  nickname!: string;
 
   @IsNotEmpty()
-  realName: string;
+  realName!: string;
 
   @IsNotEmpty()
-  description: string;
+  description!: string;
 
   @IsString({ each: true })
-  powers: string[];
+  powers!: string[];
 
   @IsNotEmpty()
-  phrase: string;
+  phrase!: string;
 
   @IsArray()
   @IsString({ each: true })
   @ArrayMinSize(1)
-  images: Buffer[];
+  images!: Buffer[];
 }
 
 export { HeroUpsertRequestDto };
