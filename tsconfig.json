@@ -5,5 +5,5 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "useDefineForClassFields": true
-  },
+  }
 }
