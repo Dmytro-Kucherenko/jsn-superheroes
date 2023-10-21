@@ -10,9 +10,7 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "baseUrl": "./",
-    "strictNullChecks": false,
-    "noImplicitAny": false,
+    "baseUrl": "./"
   },
   "references": [{ "path": "../shared" }]
 }
