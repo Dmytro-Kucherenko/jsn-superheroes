@@ -1,23 +1,18 @@
 {
+  "extends": "../../tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
-    "module": "CommonJS",
     "target": "ESNext",
-    "declaration": true,
-    "removeComments": true,
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "Bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    "skipLibCheck": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true,
     "strictNullChecks": false,
     "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
   },
   "references": [{ "path": "../shared" }]
 }

@@ -1,13 +1,16 @@
 {
+  "extends": "../../tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
-    "module": "CommonJS",
     "target": "ESNext",
+    "module": "ESNext",
     "esModuleInterop": true,
-    "baseUrl": "./",
+    "moduleResolution": "Bundler",
     "composite": true,
     "declaration": true,
     "declarationMap": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "baseUrl": "./"
   }
 }
