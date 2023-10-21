@@ -10,14 +10,14 @@ async function bootstrap() {
     new ValidationPipe({
       exceptionFactory: (errors) => {
         const cause = errors.map(
-          (error) => error.constraints[Object.keys(error.constraints)[0]],
+          (error) => error.constraints?.[Object.keys(error.constraints)[0]],
         );
         return new BadRequestException('Validation is failed.', { cause });
       },
       transform: true,
     }),
   );
-  await app.listen(configService.get('PORT'));
+  await app.listen(Number(configService.get('PORT')));
 }
 
 bootstrap();
