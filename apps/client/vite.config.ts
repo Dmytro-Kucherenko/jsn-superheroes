@@ -1,7 +1,25 @@
-import { defineConfig } from 'vite';
+import { type ConfigEnv, defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-});
+const config = ({ mode }: ConfigEnv): ReturnType<typeof defineConfig> => {
+  const {
+    VITE_APP_PROXY_SERVER_URL,
+    VITE_APP_API_ORIGIN_URL,
+    VITE_APP_DEVELOPMENT_PORT,
+  } = loadEnv(mode, process.cwd());
+
+  return defineConfig({
+    plugins: [react()],
+    server: {
+      port: Number(VITE_APP_DEVELOPMENT_PORT),
+      proxy: {
+        [VITE_APP_API_ORIGIN_URL]: {
+          target: VITE_APP_PROXY_SERVER_URL,
+          changeOrigin: true,
+        },
+      },
+    },
+  });
+};
+
+export default config;
