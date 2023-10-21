@@ -1,6 +1,20 @@
-import { Body, Controller, Get, Post, Param, HttpCode, Put, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Param,
+  HttpCode,
+  Put,
+  Delete,
+} from '@nestjs/common';
 import { HeroesService } from './heroes.service.js';
-import { HeroUpsertRequestDto, HeroItemResponseDto, HeroRequestParams, HeroGetAllResponseDto } from './libs/types';
+import {
+  HeroUpsertRequestDto,
+  HeroItemResponseDto,
+  HeroRequestParams,
+  HeroGetAllResponseDto,
+} from './libs/types';
 
 @Controller('hero')
 export class HeroesController {
@@ -26,7 +40,10 @@ export class HeroesController {
 
   @Put(':id')
   @HttpCode(200)
-  update(@Param() { id }: HeroRequestParams, @Body() body: HeroUpsertRequestDto): Promise<HeroItemResponseDto> {
+  update(
+    @Param() { id }: HeroRequestParams,
+    @Body() body: HeroUpsertRequestDto,
+  ): Promise<HeroItemResponseDto> {
     return this.heroesService.update(id, body);
   }
 

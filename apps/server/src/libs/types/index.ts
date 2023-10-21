@@ -1,1 +1,1 @@
-export { Repository } from "./repository.type.js";
+export { Repository } from './repository.type.js';

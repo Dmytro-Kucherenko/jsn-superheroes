@@ -1,4 +1,4 @@
-import { HeroItemResponseDto } from "./heroes-item-response-dto.type.js";
+import { HeroItemResponseDto } from './heroes-item-response-dto.type.js';
 
 type HeroGetAllResponseDto = HeroItemResponseDto[];
 

@@ -38,8 +38,8 @@ class HeroesRepository implements Repository<HeroItem> {
   }
 
   async findAll(): Promise<HeroItem[]> {
-    const heroes = await this.heroesRepository.find()
-    return heroes.map(hero => new HeroItem(hero));
+    const heroes = await this.heroesRepository.find();
+    return heroes.map((hero) => new HeroItem(hero));
   }
 
   async update({
@@ -53,7 +53,7 @@ class HeroesRepository implements Repository<HeroItem> {
   }: HeroItem): Promise<HeroItem> {
     const foundHero = await this.findById(id);
 
-    if(!foundHero) {
+    if (!foundHero) {
       return null;
     }
 
@@ -74,7 +74,7 @@ class HeroesRepository implements Repository<HeroItem> {
   async delete(id: number): Promise<HeroItem> {
     const foundHero = await this.findById(id);
 
-    if(!foundHero) {
+    if (!foundHero) {
       return null;
     }
 

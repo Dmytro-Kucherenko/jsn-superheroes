@@ -42,7 +42,7 @@ class HeroItem {
       images: this.images,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
-    }
+    };
   }
 }
 
