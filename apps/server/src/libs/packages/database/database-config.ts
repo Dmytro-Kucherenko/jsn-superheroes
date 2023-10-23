@@ -1,19 +1,19 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
+import { TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-const databaseConfig = {
+const databaseConfig: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
   useFactory: (config: ConfigService) => ({
-    username: config.get('DB_USERNAME'),
-    password: config.get('DB_PASSWORD'),
-    database: config.get('DB_NAME'),
-    type: config.get('DB_TYPE'),
-    host: config.get('DB_HOST'),
-    port: config.get('DB_PORT'),
+    username: config.getOrThrow('DB_USERNAME'),
+    password: config.getOrThrow('DB_PASSWORD'),
+    database: config.getOrThrow('DB_NAME'),
+    type: config.getOrThrow('DB_TYPE'),
+    host: config.getOrThrow('DB_HOST'),
+    port: config.getOrThrow('DB_PORT'),
     autoLoadEntities: true,
     synchronize: true,
-  }),
+  }) as TypeOrmModuleOptions,
   inject: [ConfigService],
-} as TypeOrmModuleAsyncOptions;
+};
 
 export { databaseConfig };
