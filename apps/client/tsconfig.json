@@ -9,7 +9,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "."
   },
   "references": [{ "path": "./tsconfig.node.json" }, { "path": "../shared" }]
 }
