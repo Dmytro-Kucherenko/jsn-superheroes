@@ -2,10 +2,15 @@ import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { AppModule } from './packages/app';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    rawBody: true,
+  });
   const configService = app.get(ConfigService);
+  app.enableCors();
+  app.useBodyParser('json', { limit: '10mb' });
   app.useGlobalPipes(
     new ValidationPipe({
       exceptionFactory: (errors) => {
@@ -17,7 +22,7 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  await app.listen(Number(configService.get('PORT')));
+  await app.listen(Number(configService.getOrThrow('PORT')));
 }
 
 bootstrap();
