@@ -1,4 +1,4 @@
-import { HttpCode } from '../../enums';
+import { ContentType, HttpCode } from '../../enums';
 import { HttpError } from '../../exceptions';
 import type { ApiOptions } from './libs/types';
 
@@ -12,37 +12,55 @@ class Api {
     this.path = path;
   }
 
-  public async load<T>(path: string, options: ApiOptions): Promise<T> {
-    const { method, payload = null } = options;
+  public async load<T>(options: ApiOptions, path?: string): Promise<T> {
+    const { method, payload = null, contentType } = options;
 
     const endpoint = [this.baseUrl, this.path, path].join('/');
+    const headers = new Headers()
+
+    if(contentType) {
+      headers.append('content-type', ContentType.JSON)
+    }
 
     const response = await fetch(endpoint, {
       method,
+      headers,
       body: payload,
     });
 
-    return (await this.handleResponse(response)).json() as T;
+    return this.handleResponse<T>(response);
   }
 
-  private async handleResponse(response: Response): Promise<Response> {
-    if (!response.ok) {
-      try {
-        const { statusCode, message, cause } = await response.json();
-        throw new HttpError({
-          status: statusCode as HttpCode,
-          message: message,
-          cause: cause,
-        });
-      } catch {
+  private async handleResponse<T>(response: Response): Promise<T> {
+    try {
+      const data = await response.json();
+
+      if (!response.ok) {
+        if ('statusCode' in data && 'message' in data) {
+          const { statusCode, message, cause } = data;
+  
+          throw new HttpError({
+            status: statusCode as HttpCode,
+            message,
+            cause,
+          });
+        }
+  
         throw new HttpError({
           status: HttpCode.BAD_REQUEST,
-          message: 'Unknown error',
+          message: 'Unknown exception.',
+          cause: data,
         });
       }
-    }
 
-    return response;
+      return data as T;
+    } catch (error) {
+      throw new HttpError({
+        status: HttpCode.INTERNAL_SERVER_ERROR,
+        message: 'Response is not json.',
+        cause: error,
+      });
+    }
   }
 }
 
