@@ -1,0 +1,60 @@
+.hero-info {
+  display: flex;
+  padding: 30px;
+  gap: 30px;
+  height: calc(100vh - 146px);
+
+  .images-container {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 26px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(230, 237, 243);
+      background-clip: padding-box;
+      border: 10px solid transparent;
+      border-radius: 15px;
+    }
+
+    .hero-image {
+      object-fit: cover;
+      width: 100%;
+      height: 300px;
+      border-radius: 25px;
+    }
+
+    .drag-zone-container {
+      width: 100%;
+      height: 300px;
+    }
+  }
+
+  .form {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+
+    label {
+      display: block;
+
+      span {
+        color: white;
+      }
+    }
+  }
+}
