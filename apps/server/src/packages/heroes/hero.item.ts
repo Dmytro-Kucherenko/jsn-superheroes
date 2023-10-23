@@ -1,11 +1,13 @@
+import { Base64File } from '../../libs/types/index.js';
+
 class HeroItem {
   public id: number | null;
   public nickname: string;
   public realName: string;
   public description: string;
-  public powers: string[];
+  public powers: string;
   public phrase: string;
-  public images: Buffer[];
+  public images: Base64File[];
   public createdAt: Date;
   public updatedAt: Date;
 
@@ -14,9 +16,9 @@ class HeroItem {
     nickname: string;
     realName: string;
     description: string;
-    powers: string[];
+    powers: string;
     phrase: string;
-    images: Buffer[];
+    images: Base64File[];
     createdAt?: Date;
     updatedAt?: Date;
   }) {
