@@ -5,4 +5,4 @@ type Base64File = {
   binary: string;
 };
 
-export { Base64File };
+export type { Base64File };
