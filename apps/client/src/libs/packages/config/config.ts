@@ -5,7 +5,7 @@ class Config {
 
   public constructor() {
     this.ENV = {
-      API_URL: import.meta.env.VITE_APP_API_ORIGIN_URL,
+      API_URL: import.meta.env.VITE_APP_SERVER_URL,
     };
   }
 }
