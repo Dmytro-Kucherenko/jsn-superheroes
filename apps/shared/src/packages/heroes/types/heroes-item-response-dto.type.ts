@@ -1,4 +1,4 @@
-import { Base64File } from 'src/libs/types';
+import { Base64File } from '../../../libs/types';
 
 type HeroItemResponseDto = {
   id: number;
