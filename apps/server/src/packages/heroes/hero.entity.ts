@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { HeroImageEntity } from './hero-image.entity.js';
 
-@Entity('hero')
+@Entity('heroes')
 class HeroEntity {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -14,20 +15,20 @@ class HeroEntity {
   @Column({ name: 'origin_description' })
   description!: string;
 
-  @Column('varchar', { array: true })
-  powers!: string[];
+  @Column('varchar')
+  powers!: string;
 
   @Column({ name: 'catch_phrase' })
   phrase!: string;
-
-  @Column('varchar', { array: true })
-  images!: Buffer[];
 
   @Column('date', { name: 'created_at', default: new Date() })
   createdAt!: Date;
 
   @Column('date', { name: 'updated_at', default: new Date() })
   updatedAt!: Date;
+
+  @OneToMany(() => HeroImageEntity, image => image.hero, { cascade: ['insert', 'update'] })
+  images!: HeroImageEntity[];
 }
 
 export { HeroEntity };
