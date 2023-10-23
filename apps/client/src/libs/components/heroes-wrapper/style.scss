@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 0;
+  gap: 20px;
+  width: calc(100% - 40px);
+  height: calc(100vh - 200px);
+}
+
+@media (width < 900px) {
+  .list {
+    flex-direction: column;
+    height: initial;
+  }
+}
