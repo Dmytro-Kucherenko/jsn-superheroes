@@ -1,0 +1,36 @@
+.input-container {
+  display: block;
+  width: 100%;
+
+  .label {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: rgb(230, 237, 243);
+  }
+
+  .input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: rgb(230, 237, 243);
+    border: 1px solid rgb(33, 38, 45);
+    border-radius: 12px;
+    background-color: rgb(22, 27, 34);
+    resize: none;
+  }
+
+  .input::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .input::-webkit-scrollbar-thumb {
+    background-color: rgb(230, 237, 243);
+    background-clip: padding-box;
+    border: 4px solid transparent;
+    border-radius: 6px;
+  }
+}
