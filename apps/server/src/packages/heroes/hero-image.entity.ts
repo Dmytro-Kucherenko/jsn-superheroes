@@ -6,14 +6,14 @@ import type { ContentType } from '../../libs/enums';
 class HeroImageEntity {
   @PrimaryGeneratedColumn()
   id!: number;
-  
+
   @Column()
   binary!: string;
 
-  @Column('varchar', {name: 'content_type'})
+  @Column('varchar', { name: 'content_type' })
   contentType!: ContentType;
 
-  @ManyToOne(() => HeroEntity, hero => hero.images, { onDelete: 'CASCADE' })
+  @ManyToOne(() => HeroEntity, (hero) => hero.images, { onDelete: 'CASCADE' })
   hero!: HeroEntity;
 }
 

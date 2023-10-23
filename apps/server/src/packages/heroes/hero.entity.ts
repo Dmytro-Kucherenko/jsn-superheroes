@@ -27,7 +27,9 @@ class HeroEntity {
   @Column('date', { name: 'updated_at', default: new Date() })
   updatedAt!: Date;
 
-  @OneToMany(() => HeroImageEntity, image => image.hero, { cascade: ['insert', 'update'] })
+  @OneToMany(() => HeroImageEntity, (image) => image.hero, {
+    cascade: ['insert', 'update'],
+  })
   images!: HeroImageEntity[];
 }
 

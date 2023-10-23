@@ -1,6 +1,6 @@
 import { ArrayMinSize, IsArray, IsNotEmpty, IsObject } from 'class-validator';
-import { type HeroUpsertRequestDto as HeroUpsertRequestDtoSchema } from 'shared/src';
 import { Base64File } from '../../../../libs/types';
+import { type HeroUpsertRequestDto as HeroUpsertRequestDtoSchema } from 'shared/src';
 
 class HeroUpsertRequestDto implements HeroUpsertRequestDtoSchema {
   @IsNotEmpty()

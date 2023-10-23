@@ -1,4 +1,4 @@
-import { Base64File } from '../../libs/types/index.js';
+import { Base64File } from '../../libs/types';
 
 class HeroItem {
   public id: number | null;
