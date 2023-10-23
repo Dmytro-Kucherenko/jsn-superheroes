@@ -23,8 +23,8 @@ export class HeroesService {
     return heroes.map((hero) => hero.fields);
   }
 
-  create(hero: HeroUpsertRequestDto): HeroItemResponseDto {
-    const createdHero = this.heroesRepository.create(new HeroItem(hero));
+  async create(hero: HeroUpsertRequestDto): Promise<HeroItemResponseDto> {
+    const createdHero = await this.heroesRepository.create(new HeroItem(hero));
 
     return createdHero.fields;
   }

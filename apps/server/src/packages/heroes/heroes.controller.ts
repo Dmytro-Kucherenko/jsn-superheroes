@@ -16,7 +16,7 @@ import {
   HeroGetAllResponseDto,
 } from './libs/types';
 
-@Controller('hero')
+@Controller('heroes')
 export class HeroesController {
   constructor(private readonly heroesService: HeroesService) {}
 
@@ -34,7 +34,7 @@ export class HeroesController {
 
   @Post()
   @HttpCode(201)
-  create(@Body() body: HeroUpsertRequestDto): HeroItemResponseDto {
+  create(@Body() body: HeroUpsertRequestDto): Promise<HeroItemResponseDto> {
     return this.heroesService.create(body);
   }
 
