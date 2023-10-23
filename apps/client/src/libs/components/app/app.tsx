@@ -1,7 +1,21 @@
-import './styles.scss';
+import { Outlet } from 'react-router';
+import { Provider } from 'react-redux';
+import { Header } from '../header/header.js';
+import { store } from '../../packages/store';
+
+import './style.scss';
+import '../../../assets/css/styles.scss';
+import '../../../assets/css/variables.scss';
 
 function App() {
-  return <h1>Hello World!</h1>;
+  return (
+    <Provider store={store.instance}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </Provider>
+  );
 }
 
 export { App };
