@@ -6,6 +6,8 @@ import {
 } from '@reduxjs/toolkit';
 import { heroesApi } from '../../../packages/heroes';
 import { heroesReducer } from '../../../slices/heroes';
+import { notification } from '../notification';
+import { handleError } from './middlewares';
 
 type Reducers = {
   heroes: ReturnType<typeof heroesReducer>;
@@ -13,6 +15,7 @@ type Reducers = {
 
 type ExtraArgument = {
   heroesApi: typeof heroesApi;
+  notification: typeof notification;
 };
 
 class Store {
@@ -29,6 +32,7 @@ class Store {
   public constructor() {
     this.extra = {
       heroesApi,
+      notification,
     };
 
     this.instance = configureStore({
@@ -42,19 +46,10 @@ class Store {
             extraArgument: this.extra,
           },
         }),
+        handleError,
       ],
     });
   }
 }
 
 export { Store };
-
-// const store = configureStore({
-//   devTools: true,
-//   reducer: {
-//     heroes: heroesReducer,
-//   },
-//   middleware: (getDefaultMiddleware) => [
-//     ...getDefaultMiddleware(),
-//   ]
-// });
