@@ -1,4 +1,9 @@
-import { getAllHeroes, createHero, updateHero, deleteHero } from './heroes.actions.js';
+import {
+  getAllHeroes,
+  createHero,
+  updateHero,
+  deleteHero,
+} from './heroes.actions.js';
 import { actions } from './heroes.slice.js';
 
 const heroesActions = {

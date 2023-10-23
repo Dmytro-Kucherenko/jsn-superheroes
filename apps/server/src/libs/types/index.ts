@@ -1,2 +1,2 @@
-export { Repository } from './repository.type.js';
-export { Base64File } from 'shared/src';
+export type { Repository } from './repository.type.js';
+export type { Base64File } from 'shared/src';
