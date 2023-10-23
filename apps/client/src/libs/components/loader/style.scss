@@ -1,3 +1,5 @@
+@use "src/assets/css/variables" as variables;
+
 .loader-container {
   position: fixed;
   top: 50%;
@@ -23,7 +25,7 @@
   translate: 0 -50%;
   width: 13px;
   height: 13px;
-  background-color: rgb(230, 237, 243);
+  background-color: variables.$white-500;
   border-radius: 50%;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }

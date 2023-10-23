@@ -1,3 +1,5 @@
+@use "src/assets/css/variables" as variables;
+
 .input-container {
   display: block;
   width: 100%;
@@ -7,7 +9,7 @@
     text-align: center;
     margin-bottom: 10px;
     font-size: 16px;
-    color: rgb(230, 237, 243);
+    color: variables.$white-500;
   }
 
   .input {
@@ -16,10 +18,10 @@
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    color: rgb(230, 237, 243);
-    border: 1px solid rgb(33, 38, 45);
+    color: variables.$white-500;
+    border: 1px solid variables.$gray-400;
     border-radius: 12px;
-    background-color: rgb(22, 27, 34);
+    background-color: variables.$gray-300;
     resize: none;
   }
 
@@ -28,7 +30,7 @@
   }
 
   .input::-webkit-scrollbar-thumb {
-    background-color: rgb(230, 237, 243);
+    background-color: variables.$white-500;
     background-clip: padding-box;
     border: 4px solid transparent;
     border-radius: 6px;

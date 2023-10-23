@@ -1,3 +1,5 @@
+@use "src/assets/css/variables" as variables;
+
 .remove-container {
   position: relative;
 }
@@ -11,7 +13,7 @@
   width: 16px;
   height: 16px;
   padding: 10px;
-  background-color: rgba(209, 209, 209, 0.5);
+  background-color: rgba(variables.$gray-700, 0.5);
   backdrop-filter: blur(5px);
   border: none;
   border-radius: 50%;
