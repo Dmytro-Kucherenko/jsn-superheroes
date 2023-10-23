@@ -1,9 +1,9 @@
-import { IsNumberString, IsInt } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsNumber } from 'class-validator';
 
 class HeroRequestParams {
-  @IsNumberString()
-  //@Type(() => Number)
-  @IsInt()
+  @Type(() => Number)
+  @IsNumber()
   id!: number;
 }
 
