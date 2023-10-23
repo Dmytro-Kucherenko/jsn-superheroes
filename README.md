@@ -23,7 +23,7 @@ You should use .env.example folder as a reference.
 
 1. [Typescript](https://www.typescriptlang.org/)
 2. [npm workspaces](https://docs.npmjs.com/cli/v9/using-npm/workspaces)
-2. [turborepo](https://turbo.build/repo/docs)
+3. [turborepo](https://turbo.build/repo/docs)
 
 ## Client
 
@@ -41,7 +41,7 @@ You should use .env.example folder as a reference.
 
    2. enums
 
-   2. exceptions
+   3. exceptions
 
    4. hooks
 
@@ -80,6 +80,6 @@ You should use .env.example folder as a reference.
 
    1. enums
 
-   5. types
+   2. types
 
 2. packages - separate app features or functionalities
