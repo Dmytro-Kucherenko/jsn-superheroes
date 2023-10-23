@@ -10,7 +10,7 @@ class HttpError extends Error {
   }: {
     message: string;
     status: HttpCode;
-    cause?: string;
+    cause?: unknown;
   }) {
     super(message, { cause });
 
