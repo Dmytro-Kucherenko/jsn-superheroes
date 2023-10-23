@@ -1,4 +1,4 @@
-import { ContentType } from "../../../../enums/index.js";
+import { ContentType } from '../../../../enums';
 
 type ApiOptions = {
   method: 'GET' | 'POST' | 'PUT' | 'DELETE';

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../../libs/enums';
-import { HeroItemResponseDto } from '../../../../packages/heroes/types';
+import { HeroItemResponseDto } from '../../../../packages/heroes';
+
 import './style.scss';
 
 const HeroCard: React.FC<{ hero: HeroItemResponseDto }> = ({ hero }) => {

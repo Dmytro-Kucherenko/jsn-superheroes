@@ -1,9 +1,10 @@
 import {
-  FieldPath,
-  FieldValues,
-  UseControllerProps,
+  type FieldPath,
+  type FieldValues,
+  type UseControllerProps,
   useController,
 } from 'react-hook-form';
+
 import './style.scss';
 
 const TextInput = <T extends FieldValues>({

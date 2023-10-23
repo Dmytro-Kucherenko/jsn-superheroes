@@ -1,10 +1,10 @@
 import { ApiRoute, ContentType } from '../../libs/enums';
 import { Api } from '../../libs/packages/api';
-import {
+import type {
   HeroGetAllResponseDto,
   HeroItemResponseDto,
   HeroUpsertRequestDto,
-} from './types/index.js';
+} from './types';
 
 class HeroesApi extends Api {
   constructor(baseUrl: string) {
@@ -29,10 +29,10 @@ class HeroesApi extends Api {
 
   update(id: number, hero: HeroUpsertRequestDto) {
     return this.load<HeroItemResponseDto>(
-      { 
-        method: 'PUT', 
-        payload: JSON.stringify(hero), 
-        contentType: ContentType.JSON, 
+      {
+        method: 'PUT',
+        payload: JSON.stringify(hero),
+        contentType: ContentType.JSON,
       },
       id.toString(),
     );

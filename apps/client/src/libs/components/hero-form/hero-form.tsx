@@ -1,16 +1,17 @@
+import { Buffer } from 'buffer';
 import { useCallback, useState } from 'react';
+import { type FieldPath, type PathValue, useForm } from 'react-hook-form';
+import type { Base64File } from '../../types';
 import type {
   HeroItemFormPayload,
   HeroItemResponseDto,
-} from '../../../packages/heroes/types';
-import { TextInput } from '../text-input/text-input.js';
-import { FieldPath, PathValue, useForm } from 'react-hook-form';
-import { FileInput } from '../file-input/file-input.js';
+} from '../../../packages/heroes';
 import { ContentType } from '../../enums';
-import { Base64File } from '../../types';
+import { TextInput } from '../text-input/text-input.js';
+import { FileInput } from '../file-input/file-input.js';
 import { RemoveCover } from '../remove-cover/remove-cover.js';
 import { Button } from '../button/button.js';
-import { Buffer } from 'buffer';
+
 import './style.scss';
 
 const HeroForm: React.FC<{
@@ -41,11 +42,17 @@ const HeroForm: React.FC<{
 
   const images = watch('images');
 
-  const handleImageDelete = useCallback((index: number) => {
-    return () => {
-      setValue('images', images.filter((_, imageIndex) => index !== imageIndex));
-    }
-  }, [setValue, images])
+  const handleImageDelete = useCallback(
+    (index: number) => {
+      return () => {
+        setValue(
+          'images',
+          images.filter((_, imageIndex) => index !== imageIndex),
+        );
+      };
+    },
+    [setValue, images],
+  );
 
   const handleEditClick = useCallback(() => {
     setFormDisabled(!formDisabled);
@@ -61,13 +68,13 @@ const HeroForm: React.FC<{
   );
 
   const handleFileChange = async (
-    files: PathValue<HeroItemFormPayload, FieldPath<HeroItemFormPayload>>, 
+    files: PathValue<HeroItemFormPayload, FieldPath<HeroItemFormPayload>>,
     file: File,
   ) => {
     const binary = Buffer.from(await file.arrayBuffer()).toString('base64');
-    
+
     return [
-      ...files as Base64File[],
+      ...(files as Base64File[]),
       { binary, contentType: file.type },
     ] as Base64File[];
   };
@@ -77,7 +84,11 @@ const HeroForm: React.FC<{
       <div className="images-container">
         <div className="images">
           {images.map((file, index) => (
-            <RemoveCover key={index} onClick={handleImageDelete(index)}>
+            <RemoveCover
+              disabled={formDisabled}
+              key={index}
+              onClick={handleImageDelete(index)}
+            >
               <img
                 className="hero-image"
                 src={`data:${file.contentType};base64,${file.binary}`}
@@ -85,11 +96,15 @@ const HeroForm: React.FC<{
               />
             </RemoveCover>
           ))}
-          
+
           {!formDisabled && (
             <div className="drag-zone-container">
               <FileInput
-                controllerProps={{ control, name: 'images', rules: { required: true, minLength: 1 } }}
+                controllerProps={{
+                  control,
+                  name: 'images',
+                  rules: { required: true, minLength: 1 },
+                }}
                 onChange={handleFileChange}
                 description="Only images are allowed"
                 extensions={[ContentType.PNG, ContentType.JPEG]}
@@ -160,7 +175,11 @@ const HeroForm: React.FC<{
         />
 
         {editable && (
-          <Button type="button" onClick={handleEditClick} disabled={!formDisabled}>
+          <Button
+            type="button"
+            onClick={handleEditClick}
+            disabled={!formDisabled}
+          >
             Edit
           </Button>
         )}

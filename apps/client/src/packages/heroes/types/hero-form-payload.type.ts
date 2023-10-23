@@ -1,4 +1,4 @@
-import { Base64File } from '../../../libs/types/index.js';
+import type { Base64File } from '../../../libs/types';
 
 type HeroItemFormPayload = {
   nickname: string;
@@ -9,4 +9,4 @@ type HeroItemFormPayload = {
   images: Base64File[];
 };
 
-export { HeroItemFormPayload };
+export type { HeroItemFormPayload };

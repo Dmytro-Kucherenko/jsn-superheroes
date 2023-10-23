@@ -1,8 +1,8 @@
-import { DataStatus } from '../../enums/data-status.enum.js';
-import { useAppDispatch, useAppSelector } from '../../hooks/index.js';
-import { Loader } from '../index.js';
 import { useEffect } from 'react';
+import { DataStatus } from '../../enums';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { heroesActions } from '../../../slices/heroes/index.js';
+import { Loader } from '../loader/loader.js';
 
 const HeroesWrapper: React.FC<{ children: React.ReactNode }> = ({
   children,

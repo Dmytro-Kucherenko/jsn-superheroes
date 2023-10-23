@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router';
 import { HeroForm } from '../../libs/components';
 import { useAppDispatch, useAppSelector } from '../../libs/hooks';
-import { HeroItemFormPayload } from '../../packages/heroes/types';
-import { AppRoute } from '../../libs/enums/app-route.enum.js';
+import { AppRoute } from '../../libs/enums';
+import type { HeroItemFormPayload } from '../../packages/heroes';
 import { heroesActions } from '../../slices/heroes';
 
 const HeroInfo: React.FC = () => {
@@ -10,8 +10,8 @@ const HeroInfo: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const heroes = useAppSelector(({ heroes }) => heroes.heroes);
-  const hero = heroes.find(hero => hero.id.toString() === id);
-  
+  const hero = heroes.find((hero) => hero.id.toString() === id);
+
   const handleSubmit = (hero: HeroItemFormPayload) => {
     dispatch(heroesActions.updateHero({ id: Number(id), hero }));
   };
@@ -21,7 +21,7 @@ const HeroInfo: React.FC = () => {
     navigate(AppRoute.ROOT);
   };
 
-  if(!hero) {
+  if (!hero) {
     navigate(AppRoute.ROOT);
   }
 

@@ -4,11 +4,11 @@ import {
   createBrowserRouter,
 } from 'react-router-dom';
 import { AppRoute } from '../../enums';
-import { App } from '../app/app.js';
-import { HeroesWrapper } from '../heroes-wrapper/heroes-wrapper.js';
 import { HeroesList } from '../../../pages/heroes-list/heroes-list.js';
 import { HeroCreate } from '../../../pages/hero-create/hero-create.js';
 import { HeroInfo } from '../../../pages/hero-info/hero-info.js';
+import { App } from '../app/app.js';
+import { HeroesWrapper } from '../heroes-wrapper/heroes-wrapper.js';
 
 const RouterProvider: React.FC = () => {
   const router = createBrowserRouter([

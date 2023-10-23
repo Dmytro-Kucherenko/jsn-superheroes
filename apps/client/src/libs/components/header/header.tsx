@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../enums/app-route.enum.js';
+import { AppRoute } from '../../enums';
+
 import './style.scss';
 
 const Header: React.FC = () => {

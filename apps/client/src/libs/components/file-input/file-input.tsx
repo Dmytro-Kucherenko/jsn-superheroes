@@ -1,6 +1,13 @@
-import UploadIcon from '../../../assets/icons/upload.svg'
-import { FieldPath, FieldValues, PathValue, UseControllerProps, useController } from 'react-hook-form';
-import { ContentType } from '../../enums';
+import {
+  type FieldPath,
+  type FieldValues,
+  type PathValue,
+  type UseControllerProps,
+  useController,
+} from 'react-hook-form';
+import UploadIcon from '../../../assets/icons/upload.svg';
+import type { ContentType } from '../../enums';
+
 import './style.scss';
 
 const FileInput = <T extends FieldValues>({
@@ -20,16 +27,14 @@ const FileInput = <T extends FieldValues>({
     field: { onChange: onFileChnage, value },
   } = useController(controllerProps);
 
-  const handleChange = async (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const [file = null] = event.target.files ?? [];
     event.currentTarget.value = '';
 
     if (file) {
       onChange ? onFileChnage(await onChange(value, file)) : onFileChnage(file);
     }
-  };;
+  };
 
   return (
     <div className="drag-zone">
