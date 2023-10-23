@@ -1,3 +1,5 @@
+@use "src/assets/css/variables" as variables;
+
 .container {
   display: flex;
   flex-direction: column;
@@ -15,6 +17,12 @@
   margin: auto;
   padding: 20px 0;
   gap: 20px;
+
+  .list-placeholder {
+    align-self: center;
+    font-size: 24px;
+    color: variables.$white-500;
+  }
 }
 
 .pagination {
@@ -26,19 +34,19 @@
 
   .pagination-item {
     padding: 10px 15px;
-    background-color: rgb(22, 27, 34);
-    border: 1px solid rgb(33, 38, 45);
+    background-color: variables.$gray-300;
+    border: 1px solid variables.$gray-400;
     border-radius: 16px;
     cursor: pointer;
 
     a {
       font-size: 16px;
-      color: rgb(230, 237, 243);
+      color: variables.$white-500;
     }
   }
 
   .pagination-active {
-    border: 1px solid rgb(72, 80, 92);
+    border: 1px solid variables.$gray-500;
     cursor: default;
   }
 }
@@ -52,9 +60,9 @@
   font-size: 18px;
   text-decoration: none;
   text-align: center;
-  color: rgb(230, 237, 243);
-  background-color: rgb(48, 54, 61);
-  border: 1px solid rgb(139, 148, 158);
+  color: variables.$white-500;
+  background-color: variables.$gray-400;
+  border: 1px solid variables.$gray-500;
   border-radius: 32px;
 }
 
