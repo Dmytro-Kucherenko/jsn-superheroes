@@ -1,7 +1,7 @@
 type Repository<T = unknown> = {
   findById(id: number): Promise<T | null>;
   findAll(payload?: unknown): Promise<T[]>;
-  create(payload: unknown): T;
+  create(payload: unknown): Promise<T>;
   update(payload: unknown): Promise<T>;
   delete(payload: unknown): Promise<number>;
 };

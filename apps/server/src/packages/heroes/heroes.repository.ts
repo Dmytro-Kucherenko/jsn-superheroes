@@ -12,14 +12,14 @@ class HeroesRepository implements Repository<HeroItem> {
     private heroesRepository: LibraryRepository<HeroEntity>,
   ) {}
 
-  create({
+  async create({
     nickname,
     realName,
     description,
     powers,
     phrase,
     images,
-  }: HeroItem): HeroItem {
+  }: HeroItem): Promise<HeroItem> {
     const hero = this.heroesRepository.create({
       nickname,
       realName,
@@ -29,7 +29,9 @@ class HeroesRepository implements Repository<HeroItem> {
       images,
     });
 
-    return new HeroItem(hero);
+    const savedHero = await this.heroesRepository.save(hero);
+
+    return new HeroItem(savedHero);
   }
 
   async findById(id: number): Promise<HeroItem | null> {
@@ -38,7 +40,8 @@ class HeroesRepository implements Repository<HeroItem> {
   }
 
   async findAll(): Promise<HeroItem[]> {
-    const heroes = await this.heroesRepository.find();
+    const heroes = await this.heroesRepository.find({ relations: ['images'] });
+
     return heroes.map((hero) => new HeroItem(hero));
   }
 
@@ -46,7 +49,7 @@ class HeroesRepository implements Repository<HeroItem> {
     const { id, nickname, realName, description, powers, phrase, images } =
       hero.fields;
 
-    const updateHero = await this.heroesRepository.save({
+    const createdHero = this.heroesRepository.create({
       id: id as number,
       nickname,
       realName,
@@ -56,6 +59,8 @@ class HeroesRepository implements Repository<HeroItem> {
       images,
       updatedAt: new Date(),
     });
+
+    const updateHero = await this.heroesRepository.save(createdHero);
 
     return new HeroItem(updateHero);
   }
