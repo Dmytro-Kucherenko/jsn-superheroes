@@ -1,0 +1,17 @@
+header {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(1, 4, 9);
+  border-bottom: 1px solid rgb(33, 38, 45);
+}
+
+.title {
+  padding: 24px;
+
+  .link {
+    font-size: 32px;
+    font-weight: 400;
+    color: rgb(230, 237, 243);
+    text-decoration: none;
+  }
+}
