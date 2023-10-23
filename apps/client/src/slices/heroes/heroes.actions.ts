@@ -1,6 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { AsyncThunkConfig } from '../../libs/types';
-import type { HeroGetAllResponseDto, HeroItemResponseDto, HeroUpsertRequestDto } from '../../packages/heroes/types/index.js';
+import type {
+  HeroGetAllResponseDto,
+  HeroItemResponseDto,
+  HeroUpsertRequestDto,
+} from '../../packages/heroes/types';
+import { NotificationType } from '../../libs/packages/notification';
+import { appActions } from '../app';
 import { name as sliceName } from './heroes.slice.js';
 
 const getAllHeroes = createAsyncThunk<
@@ -17,30 +23,54 @@ const createHero = createAsyncThunk<
   HeroItemResponseDto,
   HeroUpsertRequestDto,
   AsyncThunkConfig
->(`${sliceName}/create-hero`, async (hero, { extra }) => {
+>(`${sliceName}/create-hero`, async (hero, { extra, dispatch }) => {
   const { heroesApi } = extra;
 
-  return await heroesApi.create(hero);
+  const createdHero = await heroesApi.create(hero);
+  dispatch(
+    appActions.notify({
+      type: NotificationType.SUCCESS,
+      message: `Hero ${createdHero.nickname} was created.`,
+    }),
+  );
+
+  return createdHero;
 });
 
 const updateHero = createAsyncThunk<
   HeroItemResponseDto,
-  { id: number, hero: HeroUpsertRequestDto },
+  { id: number; hero: HeroUpsertRequestDto },
   AsyncThunkConfig
->(`${sliceName}/update-hero`, async ({id, hero}, { extra }) => {
+>(`${sliceName}/update-hero`, async ({ id, hero }, { extra, dispatch }) => {
   const { heroesApi } = extra;
 
-  return await heroesApi.update(id, hero);
+  const updatedHero = await heroesApi.update(id, hero);
+  dispatch(
+    appActions.notify({
+      type: NotificationType.INFO,
+      message: `Hero ${updatedHero.nickname} was updated.`,
+    }),
+  );
+
+  return updatedHero;
 });
 
 const deleteHero = createAsyncThunk<
   HeroItemResponseDto,
   number,
   AsyncThunkConfig
->(`${sliceName}/delete-hero`, async (id, { extra }) => {
+>(`${sliceName}/delete-hero`, async (id, { extra, dispatch }) => {
   const { heroesApi } = extra;
 
-  return await heroesApi.delete(id);
+  const deletedHero = await heroesApi.delete(id);
+  dispatch(
+    appActions.notify({
+      type: NotificationType.WARNING,
+      message: `Hero ${deletedHero.nickname} was deleted.`,
+    }),
+  );
+
+  return deletedHero;
 });
 
 export { getAllHeroes, createHero, updateHero, deleteHero };
