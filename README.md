@@ -13,9 +13,9 @@ You should use .env.example folder as a reference.
 
 3. Install dependencies: `npm install`.
 
-4. Run database by installing postgres server on your computer.
+4. Run database by using `npm run db:up` or installing postgres server on your computer and manually creating database.
 
-5. Run app: `npm run dev`
+5. Run app: `npm run dev`.
 
 ## Global
 
