@@ -27,27 +27,33 @@
 
 .pagination {
   display: flex;
+  align-items: center;
   list-style-type: none;
   gap: 10px;
   margin: 20px 0 0;
   padding: 0;
 
   .pagination-item {
-    padding: 10px 15px;
-    background-color: variables.$gray-300;
-    border: 1px solid variables.$gray-400;
-    border-radius: 16px;
-    cursor: pointer;
+    cursor: default;
 
     a {
+      display: block;
+      padding: 10px 15px;
       font-size: 16px;
       color: variables.$white-500;
+      background-color: variables.$gray-300;
+      border: 1px solid variables.$gray-400;
+      border-radius: 16px;
+      
+    }
+
+    &:not(.disabled):not(.pagination-active):hover {
+      cursor: pointer;
     }
   }
 
-  .pagination-active {
+  .pagination-active a {
     border: 1px solid variables.$gray-500;
-    cursor: default;
   }
 }
 
@@ -64,6 +70,10 @@
   background-color: variables.$gray-400;
   border: 1px solid variables.$gray-500;
   border-radius: 32px;
+
+  &:hover {
+    background-color: rgba(variables.$gray-400, 0.7);
+  }
 }
 
 @media (width < 900px) {
