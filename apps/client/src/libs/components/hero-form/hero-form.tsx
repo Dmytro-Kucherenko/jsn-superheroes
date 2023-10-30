@@ -7,10 +7,10 @@ import type {
   HeroItemResponseDto,
 } from '../../../packages/heroes';
 import { ContentType } from '../../enums';
-import { TextInput } from '../text-input/text-input.js';
-import { FileInput } from '../file-input/file-input.js';
-import { RemoveCover } from '../remove-cover/remove-cover.js';
-import { Button } from '../button/button.js';
+import { TextInput } from '../text-input/text-input';
+import { FileInput } from '../file-input/file-input';
+import { RemoveCover } from '../remove-cover/remove-cover';
+import { Button } from '../button/button';
 
 import './style.scss';
 

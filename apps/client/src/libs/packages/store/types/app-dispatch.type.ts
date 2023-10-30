@@ -1,4 +1,4 @@
-import type { store } from '../index.js';
+import type { store } from '../index';
 
 type AppDispatch = typeof store.instance.dispatch;
 

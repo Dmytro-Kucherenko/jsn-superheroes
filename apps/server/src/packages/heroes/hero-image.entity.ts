@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { HeroEntity } from './hero.entity.js';
+import { HeroEntity } from './hero.entity';
 import type { ContentType } from '../../libs/enums';
 
 @Entity('hero_images')

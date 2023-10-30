@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository as LibraryRepository } from 'typeorm';
 import { HeroEntity } from './hero.entity';
-import { HeroItem } from './hero.item.js';
+import { HeroItem } from './hero.item';
 import { Repository } from 'src/libs/types';
 
 @Injectable()

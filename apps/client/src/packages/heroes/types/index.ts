@@ -3,4 +3,4 @@ export {
   HeroItemResponseDto,
   HeroUpsertRequestDto,
 } from 'shared/src';
-export { HeroItemFormPayload } from './hero-form-payload.type.js';
+export { HeroItemFormPayload } from './hero-form-payload.type';

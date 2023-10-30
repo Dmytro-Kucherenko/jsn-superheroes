@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import { HeroForm } from '../../libs/components';
 import { useAppDispatch } from '../../libs/hooks';
-import { AppRoute } from '../../libs/enums/app-route.enum.js';
+import { AppRoute } from '../../libs/enums/app-route.enum';
 import type { HeroItemFormPayload } from '../../packages/heroes';
 import { heroesActions } from '../../slices/heroes';
 

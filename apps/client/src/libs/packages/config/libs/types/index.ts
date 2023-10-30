@@ -1,1 +1,1 @@
-export type { EnvironmentSchema } from './enviromental-schema.type.js';
+export type { EnvironmentSchema } from './enviromental-schema.type';

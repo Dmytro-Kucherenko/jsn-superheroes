@@ -1,1 +1,1 @@
-export type { AppDispatch } from './app-dispatch.type.js';
+export type { AppDispatch } from './app-dispatch.type';

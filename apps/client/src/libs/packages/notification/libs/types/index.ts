@@ -1,1 +1,1 @@
-export { type NotificationPayload } from './notification-payload.type.js';
+export { type NotificationPayload } from './notification-payload.type';

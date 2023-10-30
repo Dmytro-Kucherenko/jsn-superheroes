@@ -1,3 +1,3 @@
-export { HeroRequestParams } from './hero-request-params.type.js';
-export { HeroUpsertRequestDto } from './hero-upsert-request-dto.type.js';
+export { HeroRequestParams } from './hero-request-params.type';
+export { HeroUpsertRequestDto } from './hero-upsert-request-dto.type';
 export type { HeroItemResponseDto, HeroGetAllResponseDto } from 'shared/src';

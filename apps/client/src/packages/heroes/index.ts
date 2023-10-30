@@ -1,5 +1,5 @@
 import { config } from '../../libs/packages/config';
-import { HeroesApi } from './heroes.api.js';
+import { HeroesApi } from './heroes.api';
 
 const heroesApi = new HeroesApi(config.ENV.API_URL);
 

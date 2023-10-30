@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { HeroImageEntity } from './hero-image.entity.js';
+import { HeroImageEntity } from './hero-image.entity';
 
 @Entity('heroes')
 class HeroEntity {

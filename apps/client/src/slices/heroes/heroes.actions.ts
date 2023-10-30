@@ -7,7 +7,7 @@ import type {
 } from '../../packages/heroes/types';
 import { NotificationType } from '../../libs/packages/notification';
 import { appActions } from '../app';
-import { name as sliceName } from './heroes.slice.js';
+import { name as sliceName } from './heroes.slice';
 
 const getAllHeroes = createAsyncThunk<
   HeroGetAllResponseDto,

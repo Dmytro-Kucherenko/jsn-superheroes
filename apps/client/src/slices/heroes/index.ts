@@ -3,8 +3,8 @@ import {
   createHero,
   updateHero,
   deleteHero,
-} from './heroes.actions.js';
-import { actions } from './heroes.slice.js';
+} from './heroes.actions';
+import { actions } from './heroes.slice';
 
 const heroesActions = {
   ...actions,
@@ -15,4 +15,4 @@ const heroesActions = {
 };
 
 export { heroesActions };
-export { reducer as heroesReducer } from './heroes.slice.js';
+export { reducer as heroesReducer } from './heroes.slice';

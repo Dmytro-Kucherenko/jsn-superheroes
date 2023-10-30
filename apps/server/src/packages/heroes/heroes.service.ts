@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { HeroUpsertRequestDto, HeroItemResponseDto } from './libs/types';
-import { HeroesRepository } from './heroes.repository.js';
-import { HeroItem } from './hero.item.js';
+import { HeroesRepository } from './heroes.repository';
+import { HeroItem } from './hero.item';
 
 @Injectable()
 export class HeroesService {

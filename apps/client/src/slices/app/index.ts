@@ -1,4 +1,4 @@
-import { notify } from './app.actions.js';
+import { notify } from './app.actions';
 
 const appActions = {
   notify,

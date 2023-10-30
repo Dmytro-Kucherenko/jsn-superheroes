@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 import { Provider } from 'react-redux';
-import { Header } from '../header/header.js';
+import { Header } from '../header/header';
 import { store } from '../../packages/store';
 
 import './style.scss';

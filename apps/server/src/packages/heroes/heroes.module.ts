@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { HeroesController } from './heroes.controller.js';
-import { HeroesService } from './heroes.service.js';
-import { HeroEntity } from './hero.entity.js';
-import { HeroesRepository } from './heroes.repository.js';
-import { HeroImageEntity } from './hero-image.entity.js';
+import { HeroesController } from './heroes.controller';
+import { HeroesService } from './heroes.service';
+import { HeroEntity } from './hero.entity';
+import { HeroesRepository } from './heroes.repository';
+import { HeroImageEntity } from './hero-image.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([HeroEntity, HeroImageEntity])],

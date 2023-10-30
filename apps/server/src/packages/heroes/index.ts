@@ -1,1 +1,1 @@
-export { HeroesModule } from './heroes.module.js';
+export { HeroesModule } from './heroes.module';

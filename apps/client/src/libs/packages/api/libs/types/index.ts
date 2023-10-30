@@ -1,1 +1,1 @@
-export type { ApiOptions } from './api-options.type.js';
+export type { ApiOptions } from './api-options.type';

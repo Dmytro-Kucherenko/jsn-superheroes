@@ -8,7 +8,7 @@ import {
   Put,
   Delete,
 } from '@nestjs/common';
-import { HeroesService } from './heroes.service.js';
+import { HeroesService } from './heroes.service';
 import {
   HeroUpsertRequestDto,
   HeroItemResponseDto,

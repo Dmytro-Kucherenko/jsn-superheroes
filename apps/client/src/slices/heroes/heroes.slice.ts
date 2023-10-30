@@ -5,7 +5,7 @@ import {
   createHero,
   updateHero,
   deleteHero,
-} from './heroes.actions.js';
+} from './heroes.actions';
 import { HeroGetAllResponseDto } from '../../packages/heroes/types';
 
 const initialState: {
